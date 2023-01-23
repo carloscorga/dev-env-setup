@@ -1,5 +1,4 @@
-function RefreshEnvPath
-{
+function RefreshEnvPath {
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") `
         + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 }
@@ -47,11 +46,12 @@ choco install -y git
 
 RefreshEnvPath
 
-git clone https://github.com/carloscorga/dotfiles.git "$env:USERPROFILE\dotfiles"
+mkdir c:\GitHub\carloscorga
+git clone https://github.com/carloscorga/dev-env-setup.git "c:\GitHub\carloscorga\dev-env-setup"
 
-. "$env:USERPROFILE\dotfiles\scripts\configure-windows-explorer.ps1"
-. "$env:USERPROFILE\dotfiles\scripts\remove-default-apps.ps1"
-. "$env:USERPROFILE\dotfiles\scripts\setup-tools.ps1"
-. "$env:USERPROFILE\dotfiles\scripts\setup-tools-prompt.ps1"
-. "$env:USERPROFILE\dotfiles\scripts\setup-tools-node.ps1"
-. "$env:USERPROFILE\dotfiles\scripts\setup-tools-ide.ps1"
+. "c:\GitHub\carloscorga\dev-env-setup\scripts\configure-windows-explorer.ps1"
+. "c:\GitHub\carloscorga\dev-env-setup\scripts\remove-default-apps.ps1"
+. "c:\GitHub\carloscorga\dev-env-setup\scripts\setup-tools.ps1"
+. "c:\GitHub\carloscorga\dev-env-setup\scripts\setup-tools-prompt.ps1"
+. "c:\GitHub\carloscorga\dev-env-setup\scripts\setup-tools-node.ps1"
+. "c:\GitHub\carloscorga\dev-env-setup\scripts\setup-tools-ide.ps1"
