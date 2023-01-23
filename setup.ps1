@@ -3,14 +3,25 @@ function RefreshEnvPath {
         + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 }
 
-function checkWinget {
+function CheckWinget {
     if ($null -eq (Get-Command -Name winget.exe -ErrorAction SilentlyContinue)) {
         Write-Host "Winget not found. Please install."
         Exit
     }
 }
 
-function setupChocolatey {
+function WingetInstall {
+    param ($app)
+    $test = winget list $app | Select-String -Quiet -Pattern 'No installed package found matching input criteria' -CaseSensitive -SimpleMatch
+    if ($test) {
+        Write-Output "$app is not installed. Installing..."
+        winget install -e -h --id $app
+    } else {
+        Write-Output "$app is installed."
+    }
+}
+
+function SetupChocolatey {
     if ($null -eq (Get-Command -Name choco.exe -ErrorAction SilentlyContinue)) {
         Write-Host "Installing Chocolatey"
         Set-ExecutionPolicy Bypass -Scope Process -Force
@@ -22,8 +33,8 @@ function setupChocolatey {
     }
 }
 
-checkWinget
-setupChocolatey
+CheckWinget
+SetupChocolatey
 
 $installVisualStudio = (Read-Host "Install Visual Studio 2022: (y/N)").ToLower() -eq 'y'
 if ($installVisualStudio) {

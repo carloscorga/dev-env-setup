@@ -9,7 +9,7 @@ Write-Host "Setup tools" -ForegroundColor "Yellow"
 #     choco install -y virtualbox-guest-additions-guest.install
 # }
 
-choco install -y 7zip
+# choco install -y 7zip
 # winget install -e -h --id 7zip.7zip
 
 winget install -e -h --id Microsoft.PowerToys --source winget
@@ -28,7 +28,7 @@ winget install -e -h --id VideoLAN.VLC
 # Comms
 
 winget install -e -h --id Zoom.Zoom
-winget install -e -h --id Microsoft.Teams
+WingetInstall Microsoft.Teams
 
 # Security
 
@@ -37,12 +37,12 @@ winget install -e -h --id Twilio.Authy
 
 # Browsers
 
-winget install -e -h --id Google.Chrome
-winget install -e -h --id Mozilla.Firefox
+WingetInstall Google.Chrome
+WingetInstall Mozilla.Firefox
 
 # Dev tools
 
-#winget install -e -h --id Postman.Postman
+winget install -e -h --id Postman.Postman
 winget install -e -h --id WinMerge.WinMerge
 
 # .net
