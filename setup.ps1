@@ -57,12 +57,16 @@ choco install -y git
 
 RefreshEnvPath
 
-mkdir c:\GitHub\carloscorga
-git clone https://github.com/carloscorga/dev-env-setup.git "c:\GitHub\carloscorga\dev-env-setup"
+$GitHubRepo = "dev-env-setup"
+$GitHubUrl = "https://github.com/carloscorga/$GitHubRepo.git"
+$GitHubPath = "c:\GitHub\carloscorga"
 
-. "c:\GitHub\carloscorga\dev-env-setup\scripts\configure-windows-explorer.ps1"
-. "c:\GitHub\carloscorga\dev-env-setup\scripts\remove-default-apps.ps1"
-. "c:\GitHub\carloscorga\dev-env-setup\scripts\setup-tools.ps1"
-. "c:\GitHub\carloscorga\dev-env-setup\scripts\setup-tools-prompt.ps1"
-. "c:\GitHub\carloscorga\dev-env-setup\scripts\setup-tools-node.ps1"
-. "c:\GitHub\carloscorga\dev-env-setup\scripts\setup-tools-ide.ps1"
+mkdir $GitHubPath
+git clone $GitHubUrl "$GitHubDirectory\$GitHubRepo"
+
+. "$GitHubPath\$GitHubRepo\scripts\configure-windows-explorer.ps1"
+. "$GitHubPath\$GitHubRepo\scripts\remove-default-apps.ps1"
+. "$GitHubPath\$GitHubRepo\scripts\setup-tools.ps1"
+. "$GitHubPath\$GitHubRepo\scripts\setup-tools-prompt.ps1"
+. "$GitHubPath\$GitHubRepo\scripts\setup-tools-node.ps1"
+. "$GitHubPath\$GitHubRepo\scripts\setup-tools-ide.ps1"
